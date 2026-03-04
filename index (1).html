@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JOECELL B. INOT |  Blog</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Animated Background */
+body::before{
+    content:"";
+    position:fixed;
+    width:200%;
+    height:200%;
+    background:radial-gradient(circle,rgba(0,255,255,0.1) 1px, transparent 1px);
+    background-size:40px 40px;
+    animation:moveBg 20s linear infinite;
+    z-index:-1;
+}
+
+@keyframes moveBg{
+    from{transform:translate(0,0);}
+    to{transform:translate(-200px,-200px);}
+}
+
+/* Navigation */
+nav{
+    position:fixed;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 50px;
+    background:rgba(0,0,0,0.5);
+    backdrop-filter:blur(15px);
+    z-index:1000;
+}
+
+nav h1{
+    font-size:18px;
+    letter-spacing:2px;
+    color:#00ffff;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#00ffff;
+}
+
+/* Hero */
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero h2{
+    font-size:50px;
+    font-weight:800;
+}
+
+.hero p{
+    font-size:20px;
+    color:#00ffff;
+    margin-top:10px;
+}
+
+.typing{
+    border-right:2px solid #00ffff;
+    white-space:nowrap;
+    overflow:hidden;
+    animation:typing 4s steps(40) infinite alternate, blink 0.7s infinite;
+}
+
+@keyframes typing{
+    from{width:0}
+    to{width:100%}
+}
+
+@keyframes blink{
+    50%{border-color:transparent}
+}
+
+/* Sections */
+section{
+    padding:100px 15%;
+    opacity:0;
+    transform:translateY(50px);
+    transition:1s;
+}
+
+section.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.section-title{
+    font-size:32px;
+    margin-bottom:40px;
+    color:#00ffff;
+}
+
+/* Blog Cards */
+.blog-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.blog-card{
+    background:rgba(255,255,255,0.05);
+    padding:25px;
+    border-radius:20px;
+    transition:0.4s;
+    cursor:pointer;
+    backdrop-filter:blur(10px);
+}
+
+.blog-card:hover{
+    transform:translateY(-15px) scale(1.05);
+    box-shadow:0 0 20px #00ffff;
+}
+
+.blog-card h3{
+    margin-bottom:10px;
+    color:#00ffff;
+}
+
+/* Modal */
+.modal{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+
+.modal-content{
+    background:#111;
+    padding:40px;
+    border-radius:20px;
+    max-width:500px;
+    text-align:center;
+}
+
+.modal button{
+    margin-top:20px;
+    padding:10px 20px;
+    border:none;
+    background:#00ffff;
+    cursor:pointer;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#000;
+    margin-top:50px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h1>JOECELL B. INOT</h1>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#quotes">Quotes</a></li>
+    </ul>
+</nav>
+
+<div class="hero">
+    <h2>JOECELL B. INOT</h2>
+    <p class="typing">SECTION 3-A BS-CRIMINOLOGY</p>
+</div>
+
+<section id="about">
+    <h2 class="section-title">About Me</h2>
+    <p>I am a dedicated Criminology student from Section 3-A, passionate about justice, leadership, and discipline. My journey is about growth, service, and excellence.</p>
+</section>
+
+<section id="blog">
+    <h2 class="section-title"> Blog</h2>
+    <div class="blog-container">
+        <div class="blog-card" onclick="openModal('Discipline builds a powerful future. Stay consistent and committed.')">
+            <h3>Discipline is Power</h3>
+            <p>Click to read more...</p>
+        </div>
+
+        <div class="blog-card" onclick="openModal('Understanding criminal behavior helps create a safer society.')">
+            <h3>The Mind of a Criminologist</h3>
+            <p>Click to read more...</p>
+        </div>
+
+        <div class="blog-card" onclick="openModal('Leadership is not about rank, it is about responsibility.')">
+            <h3>Future Law Enforcer</h3>
+            <p>Click to read more...</p>
+        </div>
+    </div>
+</section>
+
+<section id="quotes">
+    <h2 class="section-title">Inspirational Quotes</h2>
+    <p>"Justice delayed is justice denied."</p>
+    <br>
+    <p>"Success begins with self-discipline."</p>
+    <br>
+    <p>"Courage is the foundation of leadership."</p>
+</section>
+
+<footer>
+    © 2026 JOECELL B. INOT | Section 3-A BS-CRIMINOLOGY
+</footer>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <p id="modalText"></p>
+        <button onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<script>
+function openModal(text){
+    document.getElementById('modalText').innerText = text;
+    document.getElementById('modal').style.display = "flex";
+}
+
+function closeModal(){
+    document.getElementById('modal').style.display = "none";
+}
+
+/* Scroll Animation */
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll",()=>{
+    sections.forEach(sec=>{
+        const top = sec.getBoundingClientRect().top;
+        if(top < window.innerHeight - 100){
+            sec.classList.add("show");
+        }
+    });
+});
+</script>
+
+</body>
+</html>
